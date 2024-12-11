@@ -8,17 +8,20 @@ df.dropna(inplace = True)
 features = ["open", "high", "low", "volume"]
 X = df[features]
 y = df["close"]
+
 rows_per_stock = 205
 num_stocks = (len(df) - 1) // rows_per_stock
 from sklearn.linear_model import BayesianRidge
 from sklearn.model_selection import train_test_split
 dt_model = BayesianRidge()
+
 unique_stocks = df['symbol'].unique()
 unique_stocks_list = unique_stocks.tolist()
 print(unique_stocks_list)
 num_stocks = len(unique_stocks_list) 
 rows_per_stock = 205  
 data = {}
+
 for i in range(num_stocks):
     dt_model = BayesianRidge()
     start_row = i * rows_per_stock
